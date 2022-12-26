@@ -4,11 +4,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 
+
 public class GunFire : MonoBehaviour
 {
-    public static Action shootInput;
-
     public ParticleSystem MuzzleFlash;
+
+    public AudioSource Handgunfiresound;
+
+    public GameObject HandGun;
+
+    public bool isFiring = false;
 
     void Start()
     {
@@ -18,14 +23,28 @@ public class GunFire : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetMouseButton(0))
-        {
-            shootInput?.Invoke();
-            MuzzleFlash.Play();        
-        }
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            Debug.Log("Reload");
-        }
+            if (Input.GetButtonDown("Fire1"))
+            {
+                if (isFiring == false)
+                {
+                    StartCoroutine(GunFiring());
+                }
+
+            }
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                Debug.Log("Reload");
+            }
+    }
+    IEnumerator GunFiring()
+    {
+        isFiring = true;
+        HandGun.GetComponent<Animator>().Play("Gunfire");
+        MuzzleFlash.Play();
+        Handgunfiresound.Play();
+        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.3f);
+        isFiring = false;
+
     }
 }
