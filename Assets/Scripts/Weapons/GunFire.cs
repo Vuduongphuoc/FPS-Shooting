@@ -42,8 +42,8 @@ public class GunFire : MonoBehaviour
         HandGun.GetComponent<Animator>().Play("Gunfire");
         MuzzleFlash.Play();
         Handgunfiresound.Play();
-        yield return new WaitForSeconds(0.3f);
-        yield return new WaitForSeconds(0.3f);
+        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.2f);
         HandGun.GetComponent<Animator>().Play("New State");
         isFiring = false;
         
