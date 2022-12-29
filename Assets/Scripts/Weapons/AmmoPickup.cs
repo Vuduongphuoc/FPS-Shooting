@@ -11,5 +11,7 @@ public class AmmoPickup : MonoBehaviour
     {
         FakeAmmoClip.SetActive(false);
         AmmoPickUpSound.Play();
+        GlobalAmmo.handgunAmmo += 12;
+        GlobalAmmo.magAmmo += 60;
     }
 }
