@@ -30,7 +30,8 @@ public class WeaponController : MonoBehaviour
             {
                 if (hit.transform.CompareTag("Enemy"))
                 {
-                    Enemy.Instance.LostHealth(3);
+                    //Enemy.Instance.LostHealth(3);
+                    Debug.Log("Enemy hit");
                 }
             }
         }
