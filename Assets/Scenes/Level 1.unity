@@ -1744,6 +1744,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
+--- !u!20 &501873974 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 2000000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
+  m_PrefabInstance: {fileID: 501873973}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &504282796
 GameObject:
   m_ObjectHideFlags: 0
@@ -6702,7 +6707,8 @@ MonoBehaviour:
   HandGun: {fileID: 2013073654}
   isFiring: 0
   emptySound: {fileID: 613590216}
-  maxDistance: 500
+  maxDistance: 200
+  cam: {fileID: 501873974}
 --- !u!1 &2016233899
 GameObject:
   m_ObjectHideFlags: 0

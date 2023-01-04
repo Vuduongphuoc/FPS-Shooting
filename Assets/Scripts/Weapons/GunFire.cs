@@ -17,6 +17,7 @@ public class GunFire : MonoBehaviour
     public bool isFiring = false;
     public AudioSource emptySound;
     public float maxDistance;
+    public Camera cam;
 
     // Update is called once per frame
     void Update()
@@ -38,6 +39,10 @@ public class GunFire : MonoBehaviour
             }
             if (Input.GetKeyDown(KeyCode.R))
             {
+                if(GlobalAmmo.handgunAmmo >= 1)
+                {
+                    
+                }
                 GlobalAmmo.handgunAmmo += 12;
                 GlobalAmmo.magAmmo -= 12;
                 if(GlobalAmmo.magAmmo == 0)
@@ -56,7 +61,7 @@ public class GunFire : MonoBehaviour
         yield return new WaitForSeconds(0.3f);
         yield return new WaitForSeconds(0.2f);
         HandGun.GetComponent<Animator>().Play("New State");
-        if(Physics.Raycast(transform.position, transform.forward, out RaycastHit hitInfo, maxDistance))
+        if(Physics.Raycast(cam.transform.position, cam.transform.forward, out RaycastHit hitInfo, maxDistance))
         {
             if (hitInfo.transform.CompareTag("Enemy"))
             {

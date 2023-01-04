@@ -28,6 +28,7 @@ public class WeaponController : MonoBehaviour
             Ray hitRay = new Ray(cam.transform.position, cam.transform.forward);
             if (Physics.Raycast(hitRay, out hit, maxDistance))
             {
+
                 if (hit.transform.CompareTag("Enemy"))
                 {
                     //Enemy.Instance.LostHealth(3);
