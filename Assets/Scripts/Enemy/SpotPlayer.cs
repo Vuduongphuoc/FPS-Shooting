@@ -36,6 +36,7 @@ public class SpotPlayer : MonoBehaviour
         EnemyBot.GetComponent<Animator>().Play("Shooting");
         firesound.Play();
         lookingAtPlayer = true;
+        Health.HpValue -= Random.Range(5,20);
         yield return new WaitForSeconds(FireRate);
         isFiring = false;
     }
