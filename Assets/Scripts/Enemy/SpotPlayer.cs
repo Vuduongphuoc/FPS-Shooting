@@ -10,6 +10,9 @@ public class SpotPlayer : MonoBehaviour
     public AudioSource firesound;
     public bool isFiring = false;
     public float FireRate = 1.2f;
+    public int getHurt;
+    public AudioSource[] hurtSound;
+    public GameObject hurtFlash;
     // Update is called once per frame
     void Update()
     {
@@ -37,6 +40,11 @@ public class SpotPlayer : MonoBehaviour
         firesound.Play();
         lookingAtPlayer = true;
         Health.HpValue -= Random.Range(5,20);
+        hurtFlash.SetActive(true);
+        yield return new WaitForSeconds(0.06f);
+        hurtFlash.SetActive(false);
+        getHurt = Random.Range(0, 3);
+        hurtSound[getHurt].Play();
         yield return new WaitForSeconds(FireRate);
         isFiring = false;
     }
