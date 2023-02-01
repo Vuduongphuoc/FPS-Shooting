@@ -8,6 +8,8 @@ public class EnemySpotting : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         transform.LookAt(thePlayer);
+        
     }
 }

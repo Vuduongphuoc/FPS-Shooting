@@ -15,9 +15,13 @@ public class GunFire : MonoBehaviour
     public GameObject HandGun;
 
     public bool isFiring = false;
+
+    public bool target = false;
     public AudioSource emptySound;
-    public float maxDistance;
-    public Camera cam;
+
+    public float targetDistance;
+
+    public int damageAmount = 20;
 
     // Update is called once per frame
     void Update()
@@ -53,23 +57,22 @@ public class GunFire : MonoBehaviour
     }
     IEnumerator GunFiring()
     {
+        RaycastHit theShot;
         isFiring = true;
         GlobalAmmo.handgunAmmo -= 1;
+
+        if (Physics.Raycast(transform.position,transform.TransformDirection(Vector3.forward), out theShot))
+        {
+            targetDistance = theShot.distance;
+            theShot.transform.SendMessage("DamageEnemy", damageAmount, SendMessageOptions.DontRequireReceiver);
+        }
+
         HandGun.GetComponent<Animator>().Play("Gunfire");
         MuzzleFlash.Play();
         Handgunfiresound.Play();
         yield return new WaitForSeconds(0.3f);
         yield return new WaitForSeconds(0.2f);
         HandGun.GetComponent<Animator>().Play("New State");
-        if(Physics.Raycast(cam.transform.position, cam.transform.forward, out RaycastHit hitInfo, maxDistance))
-        {
-            if (hitInfo.transform.CompareTag("Enemy"))
-            {
-                //Enemy.Instance.LostHealth(3);
-                Debug.Log("Enemy hit");
-            }
-        }
-
         isFiring = false;
         
 

@@ -20,7 +20,7 @@ public class WeaponController : MonoBehaviour
             _anim.CrossFade("Pistol Trigger", 0, 0);
             isShoot = false;
             muzzleEffect.Play();
-            StartCoroutine("ResetTrigger");
+            StartCoroutine(ResetTrigger());
             AmmoHandle.Instance.LostAmmo(1);
 
             // Track what bullet hit
