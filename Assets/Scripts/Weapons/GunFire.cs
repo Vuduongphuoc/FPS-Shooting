@@ -13,6 +13,7 @@ public class GunFire : MonoBehaviour
     public AudioSource Handgunfiresound;
 
     public GameObject HandGun;
+    
 
     public bool isFiring = false;
 
@@ -24,8 +25,9 @@ public class GunFire : MonoBehaviour
     public int damageAmount = 20;
 
     // Update is called once per frame
+
     void Update()
-    {
+    { 
             if (Input.GetButtonDown("Fire1"))
             {
                 if(GlobalAmmo.handgunAmmo < 1)
@@ -42,13 +44,14 @@ public class GunFire : MonoBehaviour
 
             }
             if (Input.GetKeyDown(KeyCode.R))
-            {
-                if(GlobalAmmo.handgunAmmo >= 1)
-                {
-                    
-                }
+            {  
+                GlobalAmmo.magAmmo -=  (12 - GlobalAmmo.handgunAmmo);
                 GlobalAmmo.handgunAmmo += 12;
-                GlobalAmmo.magAmmo -= 12;
+                if (GlobalAmmo.handgunAmmo > 12)
+                {
+                    GlobalAmmo.handgunAmmo = 12;
+                }
+
                 if(GlobalAmmo.magAmmo == 0)
                 {
                     emptySound.Play();

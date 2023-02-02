@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class EnemyDeath : MonoBehaviour
 {
     public int enemyHealth = 100;
@@ -27,7 +28,12 @@ public class EnemyDeath : MonoBehaviour
         enemyDeath = true;
         theEnemy.GetComponent<Animator>().Play("Enemy Death");
         enemyAi.SetActive(false);
-        yield return new WaitForSeconds(2f);
-        theEnemy.SetActive(false);
+        yield return new WaitForSeconds(0.1f);
+        theEnemy.GetComponent<EnemySpotting>().enabled= false;
+        Health.HpValue += 50;
+        if(Health.HpValue > 100)
+        {
+            Health.HpValue = 100;
+        }
     }
 }
