@@ -31,6 +31,7 @@ public class EnemyDeath : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         theEnemy.GetComponent<EnemySpotting>().enabled= false;
         Health.HpValue += 50;
+
         if(Health.HpValue > 100)
         {
             Health.HpValue = 100;
